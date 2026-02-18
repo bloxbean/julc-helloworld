@@ -115,12 +115,11 @@ The `VestingOffchainApp` demonstrates a full lock-and-unlock cycle against a loc
 Install and start [Yaci Devkit](https://github.com/bloxbean/yaci-devkit):
 
 ```bash
-yaci-cli:>create-node -o --era conway
-yaci-cli:>start
+yaci-cli:>create-node -o --start
 ```
 
 Yaci Devkit runs a local Cardano node with:
-- Node API on `http://localhost:8080`
+- Yaci Store API on `http://localhost:8080`
 - Admin API on `http://localhost:10000`
 
 ### 2. Run the Demo
