@@ -176,6 +176,10 @@ Defined in `build.gradle`:
 
 For more details on the Java subset supported by JuLC, see the [JuLC documentation](https://github.com/bloxbean/julc).
 
+## More Examples
+
+For additional validator examples (minting policies, multi-validator setups, and more), see the [julc-examples](https://github.com/bloxbean/julc-examples) repository.
+
 ## License
 
 MIT
