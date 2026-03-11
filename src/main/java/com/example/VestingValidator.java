@@ -13,7 +13,7 @@ import java.math.BigInteger;
 @SpendingValidator
 public class VestingValidator {
 
-    record VestingDatum(PubKeyHash beneficiary, BigInteger deadline) {}
+    public record VestingDatum(PubKeyHash beneficiary, BigInteger deadline) {}
 
     @Entrypoint
     static boolean validate(VestingDatum datum, PlutusData redeemer, ScriptContext ctx) {

@@ -13,7 +13,11 @@ import com.bloxbean.cardano.client.quicktx.QuickTxBuilder;
 import com.bloxbean.cardano.client.quicktx.ScriptTx;
 import com.bloxbean.cardano.client.quicktx.Tx;
 import com.bloxbean.cardano.julc.clientlib.JulcScriptLoader;
+import com.bloxbean.cardano.julc.clientlib.PlutusDataAdapter;
+import com.bloxbean.cardano.julc.ledger.PubKeyHash;
 import com.example.util.YaciHelper;
+
+import java.math.BigInteger;
 
 /**
  * End-to-end demo: lock ADA in a vesting contract, then unlock as the beneficiary.
@@ -56,12 +60,7 @@ public class VestingOffchainApp {
 
         // 3. Create datum: VestingDatum(beneficiaryPkh, deadline)
         //    Datum = Constr(0, [BData(pkh), IData(42)])
-        var datum = ConstrPlutusData.builder()
-                .alternative(0)
-                .data(ListPlutusData.of(
-                        BytesPlutusData.of(beneficiaryPkh),
-                        BigIntPlutusData.of(42)))
-                .build();
+        var datum = PlutusDataAdapter.convert(new VestingValidator.VestingDatum(PubKeyHash.of(beneficiaryPkh), BigInteger.valueOf(42)));
 
         // 4. Lock 10 ADA to the script address
         System.out.println("\n--- Locking 10 ADA ---");
